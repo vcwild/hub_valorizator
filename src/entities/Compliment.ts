@@ -1,9 +1,15 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, JoinColumn, ManyToOne } from "typeorm";
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  CreateDateColumn,
+  JoinColumn,
+  ManyToOne,
+} from "typeorm";
 
 import { v4 as uuid } from "uuid";
 import { Tag } from "./Tag";
 import { User } from "./User";
-
 
 @Entity("compliments")
 export class Compliment {
@@ -16,17 +22,17 @@ export class Compliment {
   @Column()
   user_receiver: string;
 
-  @JoinColumn({name: "user_sender"})
+  @JoinColumn({ name: "user_sender" })
   @ManyToOne(() => User)
   userSender: User;
 
-  @JoinColumn({name: "user_receiver"})
+  @JoinColumn({ name: "user_receiver" })
   @ManyToOne(() => User)
   userReceiver: User;
 
   @JoinColumn({ name: "tag_id" })
   @ManyToOne(() => Tag)
-  tag: Tag
+  tag: Tag;
 
   @Column()
   tag_id: string;

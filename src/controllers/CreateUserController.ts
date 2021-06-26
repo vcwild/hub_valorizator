@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { CreateUserService } from "../services/CreateUserService";
 
 export class CreateUserController {
-	async handle(request: Request, response: Response) {
+  async handle(request: Request, response: Response) {
     try {
       const { name, email, admin, password } = request.body;
 
@@ -12,14 +12,12 @@ export class CreateUserController {
         name,
         email,
         admin,
-        password
+        password,
       });
 
       return response.json(user);
-
-    } catch(err) {
-
-      return response.status(400).json({error: err.message});
+    } catch (err) {
+      return response.status(400).json({ error: err.message });
     }
-	}
+  }
 }
